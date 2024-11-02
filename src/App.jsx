@@ -1,7 +1,3 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
 
 // Above the App() function, create an empty Array and store it in a variable named todoList
 // Inside the Array, create at least 3 Objects with the following properties: id: unique identifier, title: summary of the todo item 
