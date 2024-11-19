@@ -1,5 +1,4 @@
-// Inside /src directory, create a new file called TodoList.jsx
-
+import TodoListItem from "./TodoListItem";
 
 const todoList = [
 
@@ -12,33 +11,29 @@ const todoList = [
 // Create a new functional React component, declare a function named 'TodoList'
 function TodoList() {
     
+ 
     // Add a multi-line return statement to your TodoList function (this is where we will insert JSX)
     return (
 
         <div>
-
-        {/*Create an unordered list, Inside your unordered list, insert a JavaScript expression hint: {} */}
+            
             <ul id="myList">
 
-            {/*Inside the JavaScript expression, map over your todoList array */}
+                {/*Inside the map() method, use the TodoListItem component, Pass key as a prop equal to the id of the todo object
+                Pass todo as a prop */}
                 {todoList.map(function (item) {
+                    return(
+                        
+                        <TodoListItem key={item.id} item={item} />
+                    )
+                    
                 
-            {/* For each Object in Array, return a list item (<li>) with the following: key attribute with value of id property,
-            inner text content with value of title property*/}
-                return (
-                    <li key={item.id} >
-                    {item.title}
-                    </li>
-                )
                 })}
 
             </ul>
-
+                
         </div>
-
     )
-
-
 };
 // Export TodoList function as default module
 export default TodoList;
