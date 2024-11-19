@@ -1,25 +1,27 @@
+import {useState} from "react";
 
-// Create a new functional React component, declare a function named AddTodoForm
-function AddTodoForm({ onAddTodo }) {
+// Add props as a parameter in the AddTodoForm function
+function AddTodoForm(props) {
 
+    const [todoTitle, setTodoTitle] = useState("");
     
-    // const [resetValue] = useState("");
-
-    // const handleReset = (event) => {
-    //     resetValue(event.target.value)
-    // }
-
     const handleAddTodo = (event) => {
+        // inside this function, prevent the default behavior of the form submit
         event.preventDefault();
-        let todoTitle = "";
-        
-        todoTitle = event.target.value;
+        // retrieve the value of the title element from the event target and store it in a variable named todoTitle
+
         console.log(todoTitle);
-        // event.target.elements.title.value = "";
-        onAddTodo(todoTitle);
+        setTodoTitle("");
+        
+        // Inside the handleAddTodo function, invoke the onAddTodo callback prop and pass todoTitle as an argument
+        props.onAddTodo(todoTitle);
+        
     }
 
-
+    // Function to clear input when form is submitted
+    const onChangeHandleChange = (event) => {
+        setTodoTitle(event.target.value);
+    }
 
     return (
 
@@ -29,9 +31,10 @@ function AddTodoForm({ onAddTodo }) {
                 create a text <input> element with id "todoTitle", Add htmlFor attribute to <label> element with same value as id above
                 create a submit <button> element with text "Add" 
                 Add a name attribute to the text input with value title*/}
+                {/* Add onSubmit prop to form element and pass the handleAddTodo function by reference */}
             <form onSubmit = {handleAddTodo}>
                 <label htmlFor="todoTitle" >Title</label>
-                <input type="text" id="todoTitle" name="title" onChange={handleAddTodo} />
+                <input type="text" id="todoTitle" name="title" value={todoTitle} onChange={onChangeHandleChange} />
                 <button  type="submit">Add</button>
             </form>
 
