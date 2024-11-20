@@ -19,7 +19,7 @@ function AddTodoForm(props) {
         
     }
 
-   
+    //function sets value typed into the input field as the useState variable 'todoTitle' and allows it to be printed to the page on submit.
     const onChangeHandleChange = (event) => {
         setTodoTitle(event.target.value);
     }
