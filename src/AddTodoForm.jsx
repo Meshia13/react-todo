@@ -11,6 +11,7 @@ function AddTodoForm(props) {
         // retrieve the value of the title element from the event target and store it in a variable named todoTitle
 
         console.log(todoTitle);
+        // Function to clear input when form is submitted
         setTodoTitle("");
         
         // Inside the handleAddTodo function, invoke the onAddTodo callback prop and pass todoTitle as an argument
@@ -18,7 +19,7 @@ function AddTodoForm(props) {
         
     }
 
-    // Function to clear input when form is submitted
+   
     const onChangeHandleChange = (event) => {
         setTodoTitle(event.target.value);
     }
