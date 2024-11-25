@@ -1,7 +1,7 @@
 import {useState} from "react";
 
 // Add props as a parameter in the AddTodoForm function
-function AddTodoForm(props) {
+function AddTodoForm({onAddTodo}) {
 
     // Create new state variable named todoTitle with setter setTodoTitle
     const [todoTitle, setTodoTitle] = useState("");
@@ -19,12 +19,12 @@ function AddTodoForm(props) {
         console.log(todoTitle);
        
         // Inside the handleAddTodo function, invoke the onAddTodo callback prop and pass todoTitle as an argument
-        props.onAddTodo({title: todoTitle, id: Date.now()});
+        onAddTodo({title: todoTitle, id: Date.now()});
         
         // Function to clear input when form is submitted
         setTodoTitle("");
     }
-    
+
     return (
 
         
