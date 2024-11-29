@@ -2,7 +2,7 @@ import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import {useState, useEffect} from "react";
 
-
+// Above the App functional component, create a new function named useSemiPersistentState which will be a custom hook
 const useSemiPersistentState = () => {
 
    // Update the default state for todoList to read your "savedTodoList" item from localStorage: Hint: localStorage.getItem method
@@ -22,19 +22,9 @@ const useSemiPersistentState = () => {
 
 function App() {
 
-  // Create new state variable named todoList with setter setTodoList and default value of an empty Array
-  // Update the default state for todoList to read your "savedTodoList" item from localStorage: Hint: localStorage.getItem method
-  // Update your default state to parse the value of the "savedTodoList" item:Hint: JSON.parse method
+  // Update App to use the new custom hook
+  // Hint: Copy the useState hook from before, but change useState to the custom hook useSemiPersistentState (no arguments)
   const [todoList, setTodoList] = useSemiPersistentState();
-  // const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem("savedTodoList")) || [todoList]);
-  // const [todoList, setTodoList] = useSemiPersistentState();
-
-  // Define a useEffect React hook with todoList as a dependency
-  // Inside the side-effect handler function, save the todoList inside localStorage with the key "savedTodoList"
-  // useEffect(() => {
-  //   // Update your side-effect function to convert todoList to a string before saving in localStorage, Hint: JSON.stringify method
-  //   localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-  // }, [todoList]);
 
   /* - Declare a new function named addTodo that takes newTodo as a parameter
    -Call the setTodoList state setter and use the spread operator to pass the existing Objects in the 
