@@ -35,7 +35,8 @@ function App() {
 
 
   return (
-    <div>
+    // update the JSX to use a Fragment
+    <>
 
       {/* Create a level-one heading that says "Todo List" */}
       <h1>Todo List</h1>
@@ -49,7 +50,7 @@ function App() {
       -Pass todoList state as a prop named todoList to the TodoList component */}
       <TodoList todoList={todoList}/>
 
-    </div>
+    </>
 
   )
 
