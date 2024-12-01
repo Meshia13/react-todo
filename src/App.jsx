@@ -7,7 +7,7 @@ const useSemiPersistentState = () => {
 
    // Update the default state for todoList to read your "savedTodoList" item from localStorage: Hint: localStorage.getItem method
   // Update your default state to parse the value of the "savedTodoList" item:Hint: JSON.parse method
-  const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem("savedTodoList")) || [todoList]);
+  const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem("savedTodoList")) || []);
 
   // Define a useEffect React hook with todoList as a dependency
   // Inside the side-effect handler function, save the todoList inside localStorage with the key "savedTodoList"
