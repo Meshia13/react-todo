@@ -1,4 +1,5 @@
 import {useState} from "react";
+import InputWithLabel from "./InputWithLabel";
 
 // Add props as a parameter in the AddTodoForm function
 function AddTodoForm({onAddTodo}) {
@@ -29,14 +30,12 @@ function AddTodoForm({onAddTodo}) {
 
         
         <div>
-             {/* Create a <form> element, inside the <form> element, create a <label> element with text "Title"
-                create a text <input> element with id "todoTitle", Add htmlFor attribute to <label> element with same value as id above
-                create a submit <button> element with text "Add" 
-                Add a name attribute to the text input with value title*/}
-                {/* Add onSubmit prop to form element and pass the handleAddTodo function by reference */}
+            {/* Add onSubmit prop to form element and pass the handleAddTodo function by reference 
+            -Refactor AddTodoForm.jsx to use new InputWithLabel component and pass the necessary props*/}
             <form onSubmit = {handleAddTodo}>
-                <label htmlFor="todoTitle" >Title</label>
-                <input type="text" id="todoTitle" name="title" value={todoTitle} onChange={handleTitleChange} />
+                <InputWithLabel 
+                todoTitle={todoTitle} 
+                handleTitleChange={handleTitleChange}/>
                 <button  type="submit">Add</button>
             </form>
 
