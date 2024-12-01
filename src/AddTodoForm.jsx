@@ -31,9 +31,11 @@ function AddTodoForm({onAddTodo}) {
         
         <div>
             {/* Add onSubmit prop to form element and pass the handleAddTodo function by reference 
-            -Refactor AddTodoForm.jsx to use new InputWithLabel component and pass the necessary props*/}
+            -Refactor AddTodoForm.jsx to use new InputWithLabel component and pass the necessary props
+            - Pass a label prop to the InputWithLabel component with value "Title"*/}
             <form onSubmit = {handleAddTodo}>
                 <InputWithLabel 
+                label = "Title"
                 todoTitle={todoTitle} 
                 handleTitleChange={handleTitleChange}/>
                 <button  type="submit">Add</button>

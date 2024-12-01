@@ -3,8 +3,8 @@
 export default function InputWithLabel(props) {
     return (
         <>
-
-        <label htmlFor="todoTitle" >Title</label>
+        {/* Replace the text inside the label element with a new props variable named label */}
+        <label htmlFor="todoTitle" >{props.label}</label>
         <input 
         type="text" 
         id="todoTitle" 
