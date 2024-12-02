@@ -1,14 +1,30 @@
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
+// Above the App functional component, create a new function named useSemiPersistentState which will be a custom hook
+const useSemiPersistentState = () => {
 
+   // Update the default state for todoList to read your "savedTodoList" item from localStorage: Hint: localStorage.getItem method
+  // Update your default state to parse the value of the "savedTodoList" item:Hint: JSON.parse method
+  const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem("savedTodoList")) || []);
 
+  // Define a useEffect React hook with todoList as a dependency
+  // Inside the side-effect handler function, save the todoList inside localStorage with the key "savedTodoList"
+  useEffect(() => {
+    // Update your side-effect function to convert todoList to a string before saving in localStorage, Hint: JSON.stringify method
+    localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+  }, [todoList]);
+
+  return [todoList, setTodoList]
+
+}
 
 function App() {
 
-  // Create new state variable named todoList with setter setTodoList and default value of an empty Array
-  const [todoList, setTodoList] = useState([]);
+  // Update App to use the new custom hook
+  // Hint: Copy the useState hook from before, but change useState to the custom hook useSemiPersistentState (no arguments)
+  const [todoList, setTodoList] = useSemiPersistentState();
 
   /* - Declare a new function named addTodo that takes newTodo as a parameter
    -Call the setTodoList state setter and use the spread operator to pass the existing Objects in the 
@@ -19,7 +35,8 @@ function App() {
 
 
   return (
-    <div>
+    // update the JSX to use a Fragment
+    <>
 
       {/* Create a level-one heading that says "Todo List" */}
       <h1>Todo List</h1>
@@ -33,7 +50,7 @@ function App() {
       -Pass todoList state as a prop named todoList to the TodoList component */}
       <TodoList todoList={todoList}/>
 
-    </div>
+    </>
 
   )
 
