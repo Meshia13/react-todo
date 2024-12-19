@@ -4,7 +4,27 @@ import {useState, useEffect} from "react";
 
 function App() {
 
-  const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem("savedTodoList")) || [todoList]);
+  // const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem("savedTodoList")) || [todoList]);
+  const [todoList, setTodoList] = useState([]);
+
+  /*  */
+  useEffect(() => {
+    new Promise((resolve, reject) => {
+      setTimeout(
+        () => {
+          resolve({data : {todoList: []}})
+        }, 2000)
+    })
+    .then(result => {
+      setTodoList(result.data.todoList)
+    })
+  }, [])
+
+  // useEffect(() => {
+  //   new Promise((resolve, reject) => 
+  //     setTimeout(
+  //       () => resolve({data : {todoList: todoList}})), 2000)
+  // }, []);
 
   // Define a useEffect React hook with todoList as a dependency
   // Inside the side-effect handler function, save the todoList inside localStorage with the key "savedTodoList"
