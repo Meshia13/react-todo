@@ -20,6 +20,8 @@ const useSemiPersistentState = () => {
 
 }
 
+
+
 function App() {
 
   // Update App to use the new custom hook
@@ -31,6 +33,18 @@ function App() {
    todoList Array along with the newTodo Object */
   const addTodo =(newTodo) => {
     setTodoList( [...todoList, newTodo] )
+  }
+
+  /* Define a new handler function named removeTodo with parameter id
+  -Inside this function, remove the item with the given id from todoList hint: filter or splice methods
+  -Call the setTodoList state setter and pass the new or modified Array */ 
+  const removeTodo = (id) => {
+
+    const newTodoList = todoList.filter(
+      (todoListFiltered) => todoListFiltered.id !== id
+    );
+    setTodoList(newTodoList);
+  
   }
 
 
@@ -47,8 +61,9 @@ function App() {
       <AddTodoForm onAddTodo={addTodo} />
 
       {/* Below the level-one heading, use the TodoList component
-      -Pass todoList state as a prop named todoList to the TodoList component */}
-      <TodoList todoList={todoList}/>
+      -Pass todoList state as a prop named todoList to the TodoList component 
+      -Pass removeTodo as a callback handler prop named onRemoveTodo to the TodoList component*/}
+      <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
 
     </>
 
