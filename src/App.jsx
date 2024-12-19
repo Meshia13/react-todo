@@ -6,32 +6,35 @@ function App() {
 
   // const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem("savedTodoList")) || [todoList]);
   const [todoList, setTodoList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   /*  */
   useEffect(() => {
     new Promise((resolve, reject) => {
       setTimeout(
         () => {
-          resolve({data : {todoList: []}})
+          const savedTodoList = JSON.parse(localStorage.getItem("savedTodoList")) || [todoList];
+          resolve({data : {todoList: savedTodoList}})
         }, 2000)
     })
     .then(result => {
-      setTodoList(result.data.todoList)
+      setTodoList(result.data.todoList);
+      setIsLoading(false);
     })
   }, [])
 
-  // useEffect(() => {
-  //   new Promise((resolve, reject) => 
-  //     setTimeout(
-  //       () => resolve({data : {todoList: todoList}})), 2000)
-  // }, []);
-
+ 
   // Define a useEffect React hook with todoList as a dependency
   // Inside the side-effect handler function, save the todoList inside localStorage with the key "savedTodoList"
   useEffect(() => {
+
+    if (!isLoading) {
+      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+    }
+
     // Update your side-effect function to convert todoList to a string before saving in localStorage, Hint: JSON.stringify method
-    localStorage.setItem("savedTodoList", JSON.stringify(todoList));
-  }, [todoList]);
+    // localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+  }, [todoList, isLoading]);
 
   /* - Declare a new function named addTodo that takes newTodo as a parameter
    -Call the setTodoList state setter and use the spread operator to pass the existing Objects in the 
@@ -64,11 +67,14 @@ function App() {
       {/* Pass setNewTodo as a callback handler prop named onAddTodo to the AddTodoForm component 
       -Change the value of the onAddTodo prop for AddTodoForm to addTodo*/}
       <AddTodoForm onAddTodo={addTodo} />
+      
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : (
 
-      {/* Below the level-one heading, use the TodoList component
-      -Pass todoList state as a prop named todoList to the TodoList component 
-      -Pass removeTodo as a callback handler prop named onRemoveTodo to the TodoList component*/}
-      <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
+        <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
+      )}
+      
 
     </>
 
