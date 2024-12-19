@@ -2,7 +2,6 @@ import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import {useState, useEffect} from "react";
 
-
 function App() {
 
   const [todoList, setTodoList] = useState(JSON.parse(localStorage.getItem("savedTodoList")) || [todoList]);
@@ -35,7 +34,7 @@ function App() {
 
 
   return (
-    // update the JSX to use a Fragment
+    
     <>
 
       {/* Create a level-one heading that says "Todo List" */}
