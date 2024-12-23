@@ -4,8 +4,10 @@ import {useState, useEffect} from "react";
 
 function App() {
 
+
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
 
   /* define a useEffect React hook with an empty dependency list
   Inside the side-effect handler function, define a new Promise and pass in a callback function with parameters resolve and reject
