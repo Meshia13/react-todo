@@ -8,27 +8,48 @@ function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  
 
-  /* define a useEffect React hook with an empty dependency list
-  Inside the side-effect handler function, define a new Promise and pass in a callback function with parameters resolve and reject
-  inside the callback function declare a timeout; callback: function with no parameters delay time: 2000 milliseconds (2 seconds)  */
-  useEffect(() => {
-    new Promise((resolve, reject) => {
-      setTimeout(
-        () => {
-          /* call the parameter resolve which is a callback function for when the Promise is successful and pass it an as Object with property data as a nested empty Object
-          Inside the data object, add a property todoList and set it's value to the initial/default list state (copy from useState hook)
-           Update the default state for todoList to be an empty Array */
-          const savedTodoList = JSON.parse(localStorage.getItem("savedTodoList")) || [];
-          resolve({data : {todoList: savedTodoList}})
-        }, 2000)
-    })
-    /* Chain a then method to your Promise constructor and pass it a function with parameter result
-    Inside the function, use your state setter to update the list and pass the todoList from your result object */
-    .then(result => {
-      setTodoList(result.data.todoList);
+  const fetchData = async() => {
+
+    const options = {
+      method : "GET",
+      headers : {Authorization : `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`},
+    };
+
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
+
+    try {
+      const response = await fetch(url, options);
+
+      if(!response.ok) {
+        const message = `Error has ocurred: ${response.status}`;
+        throw new Error(message);
+      }
+
+      const data = await response.json();
+
+      const todos = data.records.map((todo) => {
+        const newTodo = {
+          title : todo.fields.title,
+          id : todo.id
+        }
+        return newTodo;
+      }) 
+
+      setTodoList(todos);
+
       setIsLoading(false);
-    })
+    }
+
+    catch (error) {
+      console.log(error.message);
+    }
+  
+  }
+
+  useEffect (() => {
+    fetch(fetchData())
   }, [])
 
  
