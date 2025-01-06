@@ -8,27 +8,62 @@ function App() {
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  
+  /* Above the first useEffect create a new async function fetchData 
+  Inside the fetchData function, declare an empty object variable named options
+  add a method key with the value 'GET'
+  add a headers key with an object {Authorization:Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}}`*/
+  const fetchData = async() => {
 
-  /* define a useEffect React hook with an empty dependency list
-  Inside the side-effect handler function, define a new Promise and pass in a callback function with parameters resolve and reject
-  inside the callback function declare a timeout; callback: function with no parameters delay time: 2000 milliseconds (2 seconds)  */
-  useEffect(() => {
-    new Promise((resolve, reject) => {
-      setTimeout(
-        () => {
-          /* call the parameter resolve which is a callback function for when the Promise is successful and pass it an as Object with property data as a nested empty Object
-          Inside the data object, add a property todoList and set it's value to the initial/default list state (copy from useState hook)
-           Update the default state for todoList to be an empty Array */
-          const savedTodoList = JSON.parse(localStorage.getItem("savedTodoList")) || [];
-          resolve({data : {todoList: savedTodoList}})
-        }, 2000)
-    })
-    /* Chain a then method to your Promise constructor and pass it a function with parameter result
-    Inside the function, use your state setter to update the list and pass the todoList from your result object */
-    .then(result => {
-      setTodoList(result.data.todoList);
+    const options = {
+      method : "GET",
+      headers : {Authorization : `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`},
+    };
+
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
+
+    // set up a try/catch statement after options
+
+    /* in the try block: add a const response that awaits fetch. Pass in url and options as arguments for the fetch.
+    add a conditional statement that throws a new Error if response.ok is false.
+    provide the Error an argument Error: ${response.status} */
+    try {
+      const response = await fetch(url, options);
+
+      if(!response.ok) {
+        const message = `Error has ocurred: ${response.status}`;
+        throw new Error(message);
+      }
+
+      //  declare a variable, data, that awaits a parsed version of response (hint: response.json())
+      const data = await response.json();
+
+      // declare another variable, todos which accepts the results of mapping data.records into an array of todo objects
+      const todos = data.records.map((todo) => {
+        const newTodo = {
+          title : todo.fields.title,
+          id : todo.id
+        }
+        return newTodo;
+      }) 
+
+      // set the application's todoList by passing the todos created above to setTodoList
+      setTodoList(todos);
+
+      // use setIsLoading to set isLoading to false to indicate to the user the fetch is complete
       setIsLoading(false);
-    })
+    }
+
+    // create a console statement that logs the error's message.
+    catch (error) {
+      console.log(error.message);
+    }
+  
+  }
+
+  /* replace the contents of the useEffect with a call to fetchData() */
+  useEffect (() => {
+    fetch(fetchData())
   }, [])
 
  
