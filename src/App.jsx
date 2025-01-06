@@ -9,7 +9,10 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   
-
+  /* Above the first useEffect create a new async function fetchData 
+  Inside the fetchData function, declare an empty object variable named options
+  add a method key with the value 'GET'
+  add a headers key with an object {Authorization:Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}}`*/
   const fetchData = async() => {
 
     const options = {
@@ -19,6 +22,11 @@ function App() {
 
     const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
 
+    // set up a try/catch statement after options
+
+    /* in the try block: add a const response that awaits fetch. Pass in url and options as arguments for the fetch.
+    add a conditional statement that throws a new Error if response.ok is false.
+    provide the Error an argument Error: ${response.status} */
     try {
       const response = await fetch(url, options);
 
@@ -27,8 +35,10 @@ function App() {
         throw new Error(message);
       }
 
+      //  declare a variable, data, that awaits a parsed version of response (hint: response.json())
       const data = await response.json();
 
+      // declare another variable, todos which accepts the results of mapping data.records into an array of todo objects
       const todos = data.records.map((todo) => {
         const newTodo = {
           title : todo.fields.title,
@@ -37,17 +47,21 @@ function App() {
         return newTodo;
       }) 
 
+      // set the application's todoList by passing the todos created above to setTodoList
       setTodoList(todos);
 
+      // use setIsLoading to set isLoading to false to indicate to the user the fetch is complete
       setIsLoading(false);
     }
 
+    // create a console statement that logs the error's message.
     catch (error) {
       console.log(error.message);
     }
   
   }
 
+  /* replace the contents of the useEffect with a call to fetchData() */
   useEffect (() => {
     fetch(fetchData())
   }, [])
