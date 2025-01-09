@@ -61,6 +61,52 @@ function App() {
   
   }
 
+  // Stretch Practice
+  const postData = async(newTodo) => {
+
+    const options = {
+      method : "POST",
+      headers : {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+      },
+      body : JSON.stringify({
+        fields : {
+          title : newTodo,
+        }
+      }),
+    };
+    
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
+
+    try {
+
+      const response = await fetch(url, options);
+
+      if(!response.ok) {
+        const message = `Error has ocurred: ${response.status}`;
+        throw new Error(message);
+      }
+      
+      const dataResponse = await response.JSON();
+
+      const newPostTodo = {
+        title : newTodo,
+        id : dataResponse.id
+      }
+      
+
+        // set the application's todoList by passing the todos created above to setTodoList
+      setTodoList([...todoList, newPostTodo])
+
+
+    }
+   
+    catch (error) {
+      console.log(error.message);
+    }
+  }
+
   /* replace the contents of the useEffect with a call to fetchData() */
   useEffect (() => {
     fetch(fetchData())
