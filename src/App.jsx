@@ -37,7 +37,7 @@ function App() {
 
       //  declare a variable, data, that awaits a parsed version of response (hint: response.json())
       const data = await response.json();
-
+      
       // declare another variable, todos which accepts the results of mapping data.records into an array of todo objects
       const todos = data.records.map((todo) => {
         const newTodo = {
@@ -61,6 +61,53 @@ function App() {
   
   }
 
+  // Stretch Practice
+  const postData = async(newTodo) => {
+
+    const options = {
+      method : "POST",
+      headers : {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+      },
+      body : JSON.stringify({
+        fields : {
+          title : newTodo.title,
+        }
+      }),
+    };
+    
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
+
+    try {
+
+      const response = await fetch(url, options);
+
+      if(!response.ok) {
+        const message = `Error has ocurred: ${response.status}`;
+        throw new Error(message);
+      }
+      
+      const dataResponse = await response.json();
+
+      const newPostTodo = {
+        title : dataResponse.fields.title,
+        id : dataResponse.id
+      }
+       console.log(dataResponse)
+
+        // set the application's todoList by passing the todos created above to setTodoList
+      setTodoList([...todoList, newPostTodo])
+
+
+    }
+   
+    catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  
   /* replace the contents of the useEffect with a call to fetchData() */
   useEffect (() => {
     fetch(fetchData())
@@ -80,13 +127,7 @@ function App() {
     // localStorage.setItem("savedTodoList", JSON.stringify(todoList));
   }, [todoList, isLoading]);
 
-  /* - Declare a new function named addTodo that takes newTodo as a parameter
-   -Call the setTodoList state setter and use the spread operator to pass the existing Objects in the 
-   todoList Array along with the newTodo Object */
-  const addTodo =(newTodo) => {
-    setTodoList( [...todoList, newTodo] )
-  }
-
+ 
   /* Define a new handler function named removeTodo with parameter id
   -Inside this function, remove the item with the given id from todoList hint: filter or splice methods
   -Call the setTodoList state setter and pass the new or modified Array */ 
@@ -109,7 +150,7 @@ function App() {
 
       {/* Pass setNewTodo as a callback handler prop named onAddTodo to the AddTodoForm component 
       -Change the value of the onAddTodo prop for AddTodoForm to addTodo*/}
-      <AddTodoForm onAddTodo={addTodo} />
+      <AddTodoForm onAddTodo={postData} />
       
       {/*  Using a ternary operator inside JSX, if isLoading is true render the loading message, otherwise render the TodoList component */}
       {isLoading ? (
