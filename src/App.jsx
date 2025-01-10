@@ -37,7 +37,7 @@ function App() {
 
       //  declare a variable, data, that awaits a parsed version of response (hint: response.json())
       const data = await response.json();
-
+      
       // declare another variable, todos which accepts the results of mapping data.records into an array of todo objects
       const todos = data.records.map((todo) => {
         const newTodo = {
@@ -72,7 +72,7 @@ function App() {
       },
       body : JSON.stringify({
         fields : {
-          title : newTodo,
+          title : newTodo.title,
         }
       }),
     };
@@ -88,13 +88,13 @@ function App() {
         throw new Error(message);
       }
       
-      const dataResponse = await response.JSON();
+      const dataResponse = await response.json();
 
       const newPostTodo = {
-        title : newTodo,
+        title : dataResponse.fields.title,
         id : dataResponse.id
       }
-      
+       console.log(dataResponse)
 
         // set the application's todoList by passing the todos created above to setTodoList
       setTodoList([...todoList, newPostTodo])
@@ -107,6 +107,7 @@ function App() {
     }
   }
 
+  
   /* replace the contents of the useEffect with a call to fetchData() */
   useEffect (() => {
     fetch(fetchData())
@@ -126,13 +127,7 @@ function App() {
     // localStorage.setItem("savedTodoList", JSON.stringify(todoList));
   }, [todoList, isLoading]);
 
-  /* - Declare a new function named addTodo that takes newTodo as a parameter
-   -Call the setTodoList state setter and use the spread operator to pass the existing Objects in the 
-   todoList Array along with the newTodo Object */
-  const addTodo =(newTodo) => {
-    setTodoList( [...todoList, newTodo] )
-  }
-
+ 
   /* Define a new handler function named removeTodo with parameter id
   -Inside this function, remove the item with the given id from todoList hint: filter or splice methods
   -Call the setTodoList state setter and pass the new or modified Array */ 
@@ -155,7 +150,7 @@ function App() {
 
       {/* Pass setNewTodo as a callback handler prop named onAddTodo to the AddTodoForm component 
       -Change the value of the onAddTodo prop for AddTodoForm to addTodo*/}
-      <AddTodoForm onAddTodo={addTodo} />
+      <AddTodoForm onAddTodo={postData} />
       
       {/*  Using a ternary operator inside JSX, if isLoading is true render the loading message, otherwise render the TodoList component */}
       {isLoading ? (
