@@ -1,6 +1,8 @@
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import {useState, useEffect} from "react";
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+
 
 function App() {
 
@@ -142,26 +144,49 @@ function App() {
 
 
   return (
-    
-    <>
+    /*  Wrap existing JSX within new BrowserRouter component
+        Inside BrowserRouter, wrap existing JSX within new Routes component
+        Inside Routes, wrap existing JSX within new Route component with prop path equal to the root path ("/") */
+    <BrowserRouter>
+      <Routes>
+        <Route 
+          path="/"
+          element= {
+            
+          <>
 
-      {/* Create a level-one heading that says "Todo List" */}
-      <h1>Todo List</h1>
+          {/* Create a level-one heading that says "Todo List" */}
+          <h1>Todo List</h1>
 
-      {/* Pass setNewTodo as a callback handler prop named onAddTodo to the AddTodoForm component 
-      -Change the value of the onAddTodo prop for AddTodoForm to addTodo*/}
-      <AddTodoForm onAddTodo={postData} />
-      
-      {/*  Using a ternary operator inside JSX, if isLoading is true render the loading message, otherwise render the TodoList component */}
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
+          {/* Pass setNewTodo as a callback handler prop named onAddTodo to the AddTodoForm component 
+          -Change the value of the onAddTodo prop for AddTodoForm to addTodo*/}
+          <AddTodoForm onAddTodo={postData} />
 
-        <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
-      )}
-      
+          {/*  Using a ternary operator inside JSX, if isLoading is true render the loading message, otherwise render the TodoList component */}
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
 
-    </>
+            <TodoList todoList={todoList} onRemoveTodo={removeTodo}/>
+          )}
+
+
+          </>
+        }
+        />
+
+        {/* Below the Route component, create a new Route with path "/new"
+          Inside the Route component, create a level-one heading with text "New Todo List" */}
+        <Route 
+          path="/new"
+          element= {
+            <h1>New Todo List</h1>
+          }
+        />
+
+      </Routes>
+  
+    </BrowserRouter>
 
   )
 
