@@ -5,7 +5,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center; 
-    /* height: 100%; */
+   
 }
 
 
@@ -25,11 +25,12 @@ button {
     transition: background-color 0.5s ease;
     background-color: hsl(287, 97%, 36%);
     color: white;
+    box-shadow: 3px 5px 3px rgba(93, 53, 4, 0.493);
         
 }
 
 button:hover {
-    background-color: hsl(287, 97%, 26%);
+    background-color:hwb(286 26% 3% / 0.56);
 }
 
 
@@ -40,30 +41,12 @@ li {
     padding: 10px;
     background-color: hsl(309, 100%, 85%);
     margin-bottom: 5px;
-    border: 2px solid rgb(178, 16, 199);
+    border: 1px solid rgb(178, 16, 199);
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 3px 5px 3px hwb(286 26% 3% / 0.56);
+    box-shadow: 3px 3px 3px hwb(286 26% 3% / 0.56) inset;
 }
 
-
-
-/* .ListItem {
-    color: rgb(113, 8, 154);
-    
-    
-}
-
-li {
-    list-style: none;
-    
-}
-
-.Button {
-    background-color: rgb(250, 45, 250);
-    padding: 5px;
-    margin: 5px;
-    color: white;
-    font-weight: bold;
-} */

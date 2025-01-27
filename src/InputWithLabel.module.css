@@ -1,7 +1,20 @@
+label {
+    padding: 10px;
+
+    background-color: hsl(309, 100%, 85%);
+    border: 1px solid rgb(178, 16, 199);
+    border-radius: 5px;
+    box-shadow: 3px 3px 3px hwb(286 26% 3% / 0.56) inset;
+     
+ }
+
 .Text {
     font-size: 1.6rem;
     padding: 10px;
-    border: 2px solid black;
     border-radius: 5px;
+    box-shadow: 3px 5px 3px hwb(286 26% 3% / 0.56);
+    
 }
+
+
 
