@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react"
+import style from "./InputWithLabel.module.css"
 
 // Add props as a parameter in the InputWithLabel function update todoTitle and handleTitleChange references to come from props
 export default function InputWithLabel(props) {
@@ -17,7 +18,7 @@ export default function InputWithLabel(props) {
         {/* Replace the text inside the label element with a new props variable named label 
         - Replace label prop with children so that any child node(s) are used as the label text*/}
         <label htmlFor="todoTitle" >{props.children}</label>
-        <input 
+        <input className={style.Text}
         type="text" 
         id="todoTitle" 
         name="title" 

@@ -1,0 +1,9 @@
+
+.Container {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    color: rgb(113, 8, 154);
+    text-transform: uppercase;
+    font-weight: 600;
+}

@@ -1,5 +1,6 @@
 import {useState} from "react";
 import InputWithLabel from "./InputWithLabel";
+import style from "./AddTodoForm.module.css"
 
 // Add props as a parameter in the AddTodoForm function
 function AddTodoForm({onAddTodo}) {
@@ -33,7 +34,7 @@ function AddTodoForm({onAddTodo}) {
             {/* Add onSubmit prop to form element and pass the handleAddTodo function by reference 
             -Refactor AddTodoForm.jsx to use new InputWithLabel component and pass the necessary props
             - Pass a label prop to the InputWithLabel component with value "Title"*/}
-            <form onSubmit = {handleAddTodo}>
+            <form onSubmit = {handleAddTodo} className={style.Container}>
                 <InputWithLabel 
                 todoTitle={todoTitle} 
                 handleTitleChange={handleTitleChange}>
