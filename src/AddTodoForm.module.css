@@ -7,3 +7,26 @@
     text-transform: uppercase;
     font-weight: 600;
 }
+
+/* @media only screen and (max-width:950px) {
+  
+   
+}  */
+
+@media only screen and (max-width:780px) {
+
+    .Container {
+        
+        font-size: 1.1rem;
+        
+    }
+}
+
+@media only screen and (max-width:550px){
+
+    .Container {
+        
+        font-size: 1rem;
+        
+    }
+}

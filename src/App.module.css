@@ -8,3 +8,27 @@
     color: rgb(113, 8, 154);
     text-align: center;
 }
+
+
+/* @media only screen and (max-width:950px) {
+  
+   
+}  */
+
+@media only screen and (max-width:780px) {
+
+    .Title {
+        
+        font-size: 4rem;
+    }
+ 
+}
+
+@media only screen and (max-width:550px){
+
+    .Title {
+        
+        font-size: 3rem;
+    }
+  
+}
