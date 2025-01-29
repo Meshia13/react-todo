@@ -1,0 +1,73 @@
+body {
+    background-image: url("https://static.vecteezy.com/system/resources/thumbnails/018/991/302/small/soft-gradient-abstract-in-pastel-purple-and-pink-colors-gradient-background-blurred-gradient-texture-decorative-element-wallpaper-vector.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-color: hsl(286, 100%, 88%); */
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+
+.Container {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+button {
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 10px 20px;
+    transition: background-color 0.5s ease;
+    background-color: hsl(287, 97%, 36%);
+    color: white;
+    box-shadow: 3px 5px 3px rgba(93, 53, 4, 0.493);
+        
+}
+
+button:hover {
+    background-color:hwb(286 26% 3% / 0.56);
+    
+}
+
+
+li {
+    list-style: none;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px;
+    background-color: hsl(309, 100%, 85%);
+    margin-bottom: 5px;
+    border: 1px solid rgb(178, 16, 199);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 3px 5px 3px hwb(286 26% 3% / 0.56);
+    box-shadow: 3px 3px 3px hwb(286 26% 3% / 0.56) inset;
+    color: rgb(113, 8, 154);
+}
+
+
+/* @media only screen and (max-width:950px) {
+  
+   
+}  */
+
+@media only screen and (max-width:780px) {
+
+    button {
+        font-size: 1.1rem;
+                    
+    }
+ 
+}
+
+@media only screen and (max-width:550px){
+
+    button {
+        font-size: 1rem;
+                    
+    }
+  
+}

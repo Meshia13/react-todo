@@ -2,6 +2,7 @@ import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 import {useState, useEffect} from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
+import style from "./App.module.css";
 
 
 function App() {
@@ -23,8 +24,6 @@ function App() {
     };
 
     const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
-
-    // set up a try/catch statement after options
 
     /* in the try block: add a const response that awaits fetch. Pass in url and options as arguments for the fetch.
     add a conditional statement that throws a new Error if response.ok is false.
@@ -156,7 +155,7 @@ function App() {
           <>
 
           {/* Create a level-one heading that says "Todo List" */}
-          <h1>Todo List</h1>
+          <h1 className={style.Title}>To Do List</h1>
 
           {/* Pass setNewTodo as a callback handler prop named onAddTodo to the AddTodoForm component 
           -Change the value of the onAddTodo prop for AddTodoForm to addTodo*/}
