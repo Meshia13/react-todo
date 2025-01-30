@@ -1,5 +1,5 @@
 import TodoListItem from "./TodoListItem";
-
+import PropTypes from "prop-types";
 
 /*Create a new functional React component, declare a function named 'TodoList' 
 -Add props as a parameter to the TodoList functional component*/
@@ -34,6 +34,17 @@ function TodoList({todoList, onRemoveTodo}) {
         </div>
     )
 };
+
+TodoList.propTypes = {
+    todoList: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+      })
+    ),
+    onRemoveTodo: PropTypes.func.isRequired,
+  };
+
 // Export TodoList function as default module
 export default TodoList;
 

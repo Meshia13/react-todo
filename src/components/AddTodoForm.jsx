@@ -1,6 +1,7 @@
 import {useState} from "react";
 import InputWithLabel from "./InputWithLabel";
 import style from "./AddTodoForm.module.css"
+import PropTypes from "prop-types";
 
 // Add props as a parameter in the AddTodoForm function
 function AddTodoForm({onAddTodo}) {
@@ -47,5 +48,12 @@ function AddTodoForm({onAddTodo}) {
         </div>
     )
 }
+
+// Below the AddTodoForm function, define the propTypes property of that function as a new object
+// Inside the object, define a property with key onAddTodo (prop name) and value PropTypes.func (function data type)
+AddTodoForm.propTypes = {
+    onAddTodo: PropTypes.func.isRequired,
+}
+
 // Export AddTodoForm function as default module
 export default AddTodoForm
