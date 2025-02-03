@@ -1,4 +1,5 @@
 import style from "./TodoListItem.module.css"
+import PropTypes from "prop-types"
 
 // Create a new functional React component, Declare a function named TodoListItem
 //  Export TodoListItem function as default module
@@ -23,4 +24,13 @@ function TodoListItem({item, onRemoveTodo}) {
     )
 
 }
+
+TodoListItem.propTypes = {
+    todo: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+      }),
+      onRemoveTodo: PropTypes.func.isRequired,
+}
+
 export default TodoListItem
