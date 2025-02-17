@@ -10,6 +10,7 @@ function App() {
 
   const [todoList, setTodoList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [sort, setSort] = useState(true);
 
   
   /* Above the first useEffect create a new async function fetchData 
@@ -23,7 +24,11 @@ function App() {
       headers : {Authorization : `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`},
     };
 
-    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}`
+    // At the end of the URL, append a query parameter with name view and value Grid%20view (or the name of your view in Airtable if you changed it)
+    // At the end of the URL, append the following query parameters (don't forget the & delimeter):
+    //   sort[0][field] with value Title
+    //   sort[0][direction] with value "asc" (short for ascending which means low-to-high or A-to-Z)
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}?view=Grid%20view&sort[0][field]=title&sort[0][direction]=asc`
 
     /* in the try block: add a const response that awaits fetch. Pass in url and options as arguments for the fetch.
     add a conditional statement that throws a new Error if response.ok is false.
@@ -39,6 +44,30 @@ function App() {
       //  declare a variable, data, that awaits a parsed version of response (hint: response.json())
       const data = await response.json();
       
+      // const sortTitle = () => {
+      //   setSort(!sort);
+      // }
+
+      // Call the sort method on data.records and pass it a custom callback function:
+      //  function should take two parameters: (1) objectA and (2) objectB
+      data.records.sort((objectA, objectB) => {
+
+        const TitleA = objectA.fields.title;
+        const TitleB = objectB.fields.title;
+
+
+        if(sort === true) {
+          if(TitleA < TitleB){ return -1} 
+          else if(TitleA > TitleB){ return 1 }
+          else { return 0; }  
+        }else {
+          if(TitleA < TitleB){ return 1} 
+          else if(TitleA > TitleB){ return -1 }
+          else { return 0; } 
+        }
+        
+      })
+           
       // declare another variable, todos which accepts the results of mapping data.records into an array of todo objects
       const todos = data.records.map((todo) => {
         const newTodo = {
@@ -108,12 +137,23 @@ function App() {
     }
   }
 
-  
+    
   /* replace the contents of the useEffect with a call to fetchData() */
   useEffect (() => {
     fetch(fetchData())
-  }, [])
+  },)
 
+
+  // Stretch SOrt
+  const sortTitle = () => {
+    setSort((sortOrder) => {
+      if (sortOrder === true) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+  }
  
   // Define a useEffect React hook with todoList as a dependency
   // Inside the side-effect handler function, save the todoList inside localStorage with the key "savedTodoList"
@@ -160,6 +200,10 @@ function App() {
           {/* Pass setNewTodo as a callback handler prop named onAddTodo to the AddTodoForm component 
           -Change the value of the onAddTodo prop for AddTodoForm to addTodo*/}
           <AddTodoForm onAddTodo={postData} />
+
+          <button type="button" onClick={sortTitle}>
+          Sort: {sort === true ? "A-Z" : "Z-A"}
+          </button>
 
           {/*  Using a ternary operator inside JSX, if isLoading is true render the loading message, otherwise render the TodoList component */}
           {isLoading ? (
