@@ -178,7 +178,8 @@ function App() {
       (todoListFiltered) => todoListFiltered.id !== id
     );
     setTodoList(newTodoList);
-  
+    
+    
   }
 
 
