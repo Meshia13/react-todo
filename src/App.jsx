@@ -92,7 +92,7 @@ function App() {
   }
 
   // Stretch Practice
-  const postData = async(newTodo) => {
+  const addTodo = async(newTodo) => {
 
     const options = {
       method : "POST",
@@ -137,6 +137,49 @@ function App() {
     }
   }
 
+   /* Define a new handler function named removeTodo with parameter id
+  -Inside this function, remove the item with the given id from todoList hint: filter or splice methods
+  -Call the setTodoList state setter and pass the new or modified Array */ 
+  const removeTodo = async(id) => {
+
+    const options = {
+      method : "DELETE",
+      headers : {
+        // "Content-Type": "application/json",
+        Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
+      },
+     
+    };
+    
+    const url = `https://api.airtable.com/v0/${import.meta.env.VITE_AIRTABLE_BASE_ID}/${import.meta.env.VITE_TABLE_NAME}/${id}`
+
+    try {
+
+      const response = await fetch(url, options);
+
+      if(!response.ok) {
+        const message = `Error has ocurred: ${response.status}`;
+        throw new Error(message);
+      }
+      
+      const dataResponse = await response.json();
+
+      console.log(dataResponse)
+
+
+    }
+   
+    catch (error) {
+      console.log(error.message);
+    }
+
+    
+    const newTodoList = todoList.filter(
+      (todoListFiltered) => todoListFiltered.id !== id
+    );
+    setTodoList(newTodoList);
+  }
+  
     
   /* replace the contents of the useEffect with a call to fetchData() */
   useEffect (() => {
@@ -169,20 +212,6 @@ function App() {
   }, [todoList, isLoading]);
 
  
-  /* Define a new handler function named removeTodo with parameter id
-  -Inside this function, remove the item with the given id from todoList hint: filter or splice methods
-  -Call the setTodoList state setter and pass the new or modified Array */ 
-  const removeTodo = (id) => {
-
-    const newTodoList = todoList.filter(
-      (todoListFiltered) => todoListFiltered.id !== id
-    );
-    setTodoList(newTodoList);
-    
-    
-  }
-
-
   return (
     /*  Wrap existing JSX within new BrowserRouter component
         Inside BrowserRouter, wrap existing JSX within new Routes component
@@ -200,7 +229,7 @@ function App() {
 
           {/* Pass setNewTodo as a callback handler prop named onAddTodo to the AddTodoForm component 
           -Change the value of the onAddTodo prop for AddTodoForm to addTodo*/}
-          <AddTodoForm onAddTodo={postData} />
+          <AddTodoForm onAddTodo={addTodo} />
 
           <button type="button" onClick={sortTitle}>
           Sort: {sort === true ? "A-Z" : "Z-A"}
