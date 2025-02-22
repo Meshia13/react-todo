@@ -4,6 +4,7 @@ import {useState, useEffect} from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import style from "./App.module.css";
 import NavBar from "./components/NavMenu";
+import About from "./components/About";
 
 
 function App() {
@@ -254,11 +255,22 @@ function App() {
         {/* Below the Route component, create a new Route with path "/new"
           Inside the Route component, create a level-one heading with text "New Todo List" */}
         <Route 
-          path="/new"
+          path="/todos"
           element= {
+            <>
+            <NavBar />
             <h1>New Todo List</h1>
+            <AddTodoForm onAddTodo={addTodo} />
+            <TodoList todoList={todoList} onRemoveTodo={removeTodo} />
+            </>
           }
         />
+
+
+        <Route 
+          path="/about"
+          element= { <About />}
+        />  
 
       </Routes>
   

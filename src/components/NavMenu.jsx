@@ -13,7 +13,7 @@ function NavBar() {
                     <a href="/about">About</a>
                 </li>
                 <li>
-                    <a href="/subscribe">Subscribe</a>
+                    <a href="/todos">ToDo</a>
                 </li>
             </ul>
         </nav>
