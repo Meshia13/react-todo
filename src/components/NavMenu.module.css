@@ -1,0 +1,40 @@
+
+.NavBar {
+    /* list-style: none;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 10px;
+    background-color: hsl(309, 100%, 85%);
+    margin-bottom: 5px;
+    border: 1px solid rgb(178, 16, 199);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 3px 5px 3px hwb(286 26% 3% / 0.56);
+    box-shadow: 3px 3px 3px hwb(286 26% 3% / 0.56) inset;
+    color: rgb(113, 8, 154); */
+    /* background-color: hsl(287, 97%, 36%);
+    color: white; */
+
+    background-color: hsl(287, 97%, 36%);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+nav a {
+    color: inherit;
+}
+

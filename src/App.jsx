@@ -3,6 +3,7 @@ import AddTodoForm from "./components/AddTodoForm";
 import {useState, useEffect} from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import style from "./App.module.css";
+import NavBar from "./components/NavMenu";
 
 
 function App() {
@@ -213,6 +214,7 @@ function App() {
 
  
   return (
+    
     /*  Wrap existing JSX within new BrowserRouter component
         Inside BrowserRouter, wrap existing JSX within new Routes component
         Inside Routes, wrap existing JSX within new Route component with prop path equal to the root path ("/") */
@@ -223,7 +225,8 @@ function App() {
           element= {
             
           <>
-
+          <NavBar />
+          
           {/* Create a level-one heading that says "Todo List" */}
           <h1 className={style.Title}>To Do List</h1>
 
