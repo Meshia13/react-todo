@@ -1,12 +1,13 @@
 import NavBar from "./NavMenu"
-
+import style from "./About.module.css"
 
 function About() {
 
     return (
-        <div className="aboutContainer">
+        <div className= {style.aboutContainer}>
             <NavBar />
-        
+
+            <div className={style.aboutInfo}>
             <h1>About!</h1>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ipsam hic dolorem pariatur tempora non architecto sint 
@@ -23,6 +24,8 @@ function About() {
                 Libero incidunt suscipit beatae, harum expedita odio itaque ea perferendis rerum velit dolor eveniet nesciunt magnam esse 
                 corporis neque et! Non.
             </p>
+            </div>
+           
         </div>
     )
 }

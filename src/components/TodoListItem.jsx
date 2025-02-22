@@ -1,5 +1,6 @@
 import style from "./TodoListItem.module.css"
 import PropTypes from "prop-types"
+import NavBar from "./NavMenu"
 
 // Create a new functional React component, Declare a function named TodoListItem
 //  Export TodoListItem function as default module
@@ -8,6 +9,8 @@ function TodoListItem({item, onRemoveTodo}) {
 
     // Add a multi-line return statement to your TodoListItem function (this is where we will insert JSX)
     return(
+        <>
+        {/* <NavBar /> */}
         <div className={style.Container}>
 
             <li className={style.ListItem}>
@@ -19,7 +22,7 @@ function TodoListItem({item, onRemoveTodo}) {
             </li>
 
         </div>
-
+        </>
        
     )
 
