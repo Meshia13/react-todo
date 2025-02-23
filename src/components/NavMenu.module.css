@@ -18,11 +18,12 @@
     font-weight: bold;
     color: rgb(93, 4, 93);
     width: 100%;
+    text-transform: uppercase;
 }
 
 .homeTitle:hover {
     font-weight: bolder;
-    color: rgb(65, 2, 65);
+    color:hsl(319, 99%, 52%);;
 }
 
 .NavBar ul {
@@ -32,6 +33,7 @@
     width: 100%;
     box-sizing: border-box;
     margin-left: 4rem;
+    text-transform: uppercase;
     
 }
 
@@ -46,9 +48,11 @@
     display: block;
     padding: 0.5rem;
     color: rgb(93, 4, 93);
-    width: 50%;
+    width: 100%;
     text-align: center;
     box-sizing: border-box;
+    border-radius: 10px;
+   
 }
 
 .NavBar ul li.active a {
@@ -57,7 +61,7 @@
 }
 
 .NavBar ul li:hover a {
-    background-color: hsl(287, 97%, 36%);
+    background-color: hsl(319, 99%, 52%);
     color: white;
 }
 
@@ -77,6 +81,8 @@
     background-color: white;
     border-radius: 0.2rem;
 }
+
+/* Media Queries */
 
 @media only screen and (max-width:600px) {
     .NavBar {

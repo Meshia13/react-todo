@@ -63,11 +63,27 @@ button:hover {
  
 }
 
-@media only screen and (max-width:550px){
+@media only screen and (max-width:600px){
 
     button {
         font-size: 1rem;
                     
     }
+
+    .ListItem {
+        
+        font-size: 1.5rem;
+    }
+  
+}
+
+@media only screen and (max-width:450px){
+
+    button {
+        font-size: 1rem;
+                    
+    }
+
+  
   
 }

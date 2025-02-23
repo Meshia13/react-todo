@@ -1,24 +1,10 @@
 .aboutTitle {
-    font-family: "Lavishly Yours", serif;
+    font-family: "Flavors", serif;
     font-size: 5rem;
     font-weight: 200;
     font-style: normal;
     color: rgb(113, 8, 154);
     text-align: center; 
-}
-
-/* font-family: "Lavishly Yours", serif;
-    font-size: 5rem;
-    font-weight: 200;
-    font-style: normal;
-    color: rgb(113, 8, 154);
-    text-align: center; */
-
-.aboutContainer {
-    
-    height: 100vh;
-    
-    
 }
 
 .aboutInfo {

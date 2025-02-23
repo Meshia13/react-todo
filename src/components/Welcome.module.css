@@ -1,6 +1,6 @@
 .welcomeText {
     font-size: 50px;
-    font-family: "Lavishly Yours", serif;
+    font-family: "Flavors", serif;
     font-size: 5rem;
     font-weight: 200;
     font-style: normal;
@@ -43,7 +43,7 @@
 }
 
 .button:hover {
-    background-color: hsl(287, 97%, 50%);
+    background-color: hsl(319, 99%, 52%);
     transform: translateY(-2px);
     color: white;
 }
