@@ -1,6 +1,5 @@
 import style from "./TodoListItem.module.css"
 import PropTypes from "prop-types"
-import NavBar from "./NavMenu"
 
 // Create a new functional React component, Declare a function named TodoListItem
 //  Export TodoListItem function as default module

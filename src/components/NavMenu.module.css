@@ -1,31 +1,135 @@
 
 .NavBar {
-    background-color: hsl(287, 97%, 36%);
-    padding: 0 40px;
-    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 50px;
-    border: 2px solid yellow;
     width: 100vw;
     position: fixed;
     top: 0;
     z-index: 10;
     box-sizing: border-box;
     left: 0;
+    padding: 0;
 }
 
+.homeTitle {
+    font-size: 1.5rem;
+    margin: 1rem;
+    font-weight: bold;
+    color: rgb(93, 4, 93);
+    width: 100%;
+}
 
-nav ul {
+.homeTitle:hover {
+    font-weight: bolder;
+    color: rgb(65, 2, 65);
+}
+
+.NavBar ul {
+    display: flex;
     padding: 0;
     margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 4rem;
+    
+}
+
+.NavBar ul li {
     list-style: none;
-    display: flex;
-    gap: 1rem;
+    flex: 1;
+    margin: 0;
+    padding: 0;
 }
 
-nav a {
-    color: inherit;
+.NavBar ul li a {
+    display: block;
+    padding: 0.5rem;
+    color: rgb(93, 4, 93);
+    width: 50%;
+    text-align: center;
+    box-sizing: border-box;
 }
 
+.NavBar ul li.active a {
+    background-color: hsl(287, 97%, 36%);
+    color: aliceblue;
+}
+
+.NavBar ul li:hover a {
+    background-color: hsl(287, 97%, 36%);
+    color: white;
+}
+
+.NavBar .menu {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.5rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.25rem;
+    height: 2rem;
+}
+
+.NavBar .menu span {
+    height: 0.4rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 0.2rem;
+}
+
+@media only screen and (max-width:600px) {
+    .NavBar {
+        background-color: hsl(287, 97%, 36%); 
+        align-items: stretch;
+    }
+
+    .NavBar .menu {
+        display: flex;
+        background-color: hsl(287, 97%, 36%); 
+    }
+
+    .NavBar {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .NavBar ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 0.25rem;
+        margin: 0;
+    }
+
+    .NavBar ul.open {
+        display: flex;
+    }
+
+    .NavBar ul li {
+        width: 100%;        
+    }
+
+    .NavBar ul li a {
+        width: 100%;
+    }
+
+    .NavBar ul li.active a {
+        background-color: hsl(319, 99%, 52%);
+        color: white
+    }
+    
+    .NavBar ul li:hover a {
+        background-color: hsl(319, 99%, 52%);
+        color: white;
+    }
+
+    .homeTitle {
+        color: white;
+    }
+    .homeTitle:hover {
+        font-weight: bolder;
+        width: 30%;
+        color: white
+    }
+}

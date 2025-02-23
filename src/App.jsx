@@ -5,6 +5,9 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import style from "./App.module.css";
 import NavBar from "./components/NavMenu";
 import About from "./components/About";
+import Welcome from "./components/Welcome"
+import Subscribe from "./components/Subscribe";
+import Contact from "./components/Contact";
 
 
 function App() {
@@ -221,8 +224,14 @@ function App() {
         Inside Routes, wrap existing JSX within new Route component with prop path equal to the root path ("/") */
     <BrowserRouter>
       <Routes>
+
         <Route 
           path="/"
+          element= { <Welcome />}
+        /> 
+
+        <Route 
+          path="/todos"
           element= {
             
           <>
@@ -255,7 +264,7 @@ function App() {
         {/* Below the Route component, create a new Route with path "/new"
           Inside the Route component, create a level-one heading with text "New Todo List" */}
         <Route 
-          path="/todos"
+          path="/new"
           element= {
             <>
             <NavBar />
@@ -271,6 +280,17 @@ function App() {
           path="/about"
           element= { <About />}
         />  
+
+        <Route 
+          path="/subscribe"
+          element= { <Subscribe />}
+        /> 
+
+        <Route 
+          path="/contact"
+          element= { <Contact />}
+        /> 
+        
 
       </Routes>
   
