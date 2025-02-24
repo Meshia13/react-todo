@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 /*Create a new functional React component, declare a function named 'TodoList' 
 -Add props as a parameter to the TodoList functional component*/
 function TodoList({todoList, onRemoveTodo}) {
-    // const todoList = {props}
- 
+     
     // Add a multi-line return statement to your TodoList function (this is where we will insert JSX)
     return (
 

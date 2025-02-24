@@ -1,0 +1,53 @@
+.welcomeText {
+    font-size: 50px;
+    font-family: "Flavors", serif;
+    font-size: 5rem;
+    font-weight: 200;
+    font-style: normal;
+    color: rgb(113, 8, 154);
+    text-align: center; 
+}
+
+.welcomeEmoji {
+    animation-name: wave-animation; 
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    transform-origin: 70% 70%;
+    display: inline-block;
+  }
+  
+  @keyframes wave-animation {
+      0% { transform: rotate( 0.0deg) }
+     10% { transform: rotate(14.0deg) } 
+     20% { transform: rotate(-8.0deg) }
+     30% { transform: rotate(14.0deg) }
+     40% { transform: rotate(-4.0deg) }
+     50% { transform: rotate(10.0deg) }
+     60% { transform: rotate( 0.0deg) } 
+    100% { transform: rotate( 0.0deg) }
+  }
+  
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    background-color: hsl(287, 97%, 36%);
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 3px 5px 3px rgba(93, 53, 4, 0.493);
+}
+
+.button:hover {
+    background-color: hsl(319, 99%, 52%);
+    transform: translateY(-2px);
+    color: white;
+}
+
+.button:active {
+    transform: translateY(1px);
+}

@@ -2,10 +2,10 @@ body {
     background-image: url("https://static.vecteezy.com/system/resources/thumbnails/018/991/302/small/soft-gradient-abstract-in-pastel-purple-and-pink-colors-gradient-background-blurred-gradient-texture-decorative-element-wallpaper-vector.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    /* background-color: hsl(286, 100%, 88%); */
     display: flex;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
+    
 }
 
 
@@ -31,7 +31,7 @@ button:hover {
 }
 
 
-li {
+.ListItem {
     list-style: none;
     font-size: 2rem;
     font-weight: bold;
@@ -63,11 +63,27 @@ li {
  
 }
 
-@media only screen and (max-width:550px){
+@media only screen and (max-width:600px){
 
     button {
         font-size: 1rem;
                     
     }
+
+    .ListItem {
+        
+        font-size: 1.5rem;
+    }
+  
+}
+
+@media only screen and (max-width:450px){
+
+    button {
+        font-size: 1rem;
+                    
+    }
+
+  
   
 }

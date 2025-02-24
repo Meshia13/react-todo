@@ -1,0 +1,14 @@
+.aboutTitle {
+    font-family: "Flavors", serif;
+    font-size: 5rem;
+    font-weight: 200;
+    font-style: normal;
+    color: rgb(113, 8, 154);
+    text-align: center; 
+}
+
+.aboutInfo {
+   
+    padding: 20px;
+    margin: 20px;
+}

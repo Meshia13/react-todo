@@ -31,13 +31,19 @@ label {
  
 }
 
-@media only screen and (max-width:550px){
+@media only screen and (max-width:600px){
 
     .Text {
         font-size: 1.3rem;
        
         
     }
+
+    label {
+        padding: 5px;
+        
+         
+     }
    
 }
 

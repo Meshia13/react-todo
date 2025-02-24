@@ -8,6 +8,8 @@ function TodoListItem({item, onRemoveTodo}) {
 
     // Add a multi-line return statement to your TodoListItem function (this is where we will insert JSX)
     return(
+        <>
+        {/* <NavBar /> */}
         <div className={style.Container}>
 
             <li className={style.ListItem}>
@@ -19,7 +21,7 @@ function TodoListItem({item, onRemoveTodo}) {
             </li>
 
         </div>
-
+        </>
        
     )
 
