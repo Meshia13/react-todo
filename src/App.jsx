@@ -49,10 +49,6 @@ function App() {
       //  declare a variable, data, that awaits a parsed version of response (hint: response.json())
       const data = await response.json();
       
-      // const sortTitle = () => {
-      //   setSort(!sort);
-      // }
-
       // Call the sort method on data.records and pass it a custom callback function:
       //  function should take two parameters: (1) objectA and (2) objectB
       data.records.sort((objectA, objectB) => {
@@ -150,7 +146,7 @@ function App() {
     const options = {
       method : "DELETE",
       headers : {
-        // "Content-Type": "application/json",
+        
         Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_TOKEN}`,
       },
      

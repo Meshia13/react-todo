@@ -44,6 +44,5 @@ TodoList.propTypes = {
     onRemoveTodo: PropTypes.func.isRequired,
   };
 
-// Export TodoList function as default module
 export default TodoList;
 
